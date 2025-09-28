@@ -339,17 +339,340 @@
 
         /* 响应式设计 */
         @media print {
+            /* 隐藏不需要打印的元素 */
             .print-hide {
                 display: none !important;
             }
-            .resume-container {
-                box-shadow: none;
-                margin: 0;
-                border-radius: 0;
+            
+            /* 页面设置 */
+            @page {
+                size: A4;
+                margin: 15mm 10mm 15mm 10mm;
             }
+            
+            /* 基本页面样式 */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                font-size: 12px !important;
+                line-height: 1.4 !important;
+                background: white !important;
+                color: #000 !important;
+            }
+            
+            /* 简历容器 */
+            .resume-container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                max-width: none !important;
+                width: 100% !important;
+                background: white !important;
+            }
+            
+            /* 头部样式 */
             .header-section {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+                color: white !important;
+                padding: 20px 0 !important;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .header-section::before {
+                display: none !important;
+            }
+            
+            /* 个人信息调整 */
+            .profile-img {
+                width: 100px !important;
+                height: 100px !important;
+                font-size: 2.5rem !important;
+                border: 3px solid rgba(255,255,255,0.5) !important;
+            }
+            
+            .name-title h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .name-title h4 {
+                font-size: 1.1rem !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .name-title p {
+                font-size: 0.9rem !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .contact-info {
+                margin-top: 10px !important;
+            }
+            
+            .contact-info li {
+                font-size: 0.85rem !important;
+                margin-bottom: 4px !important;
+                padding: 2px !important;
+            }
+            
+            /* 内容区域 */
+            .container {
+                padding: 15px !important;
+            }
+            
+            /* 标题样式 */
+            .section-title {
+                font-size: 1.2rem !important;
+                margin-bottom: 15px !important;
+                padding-bottom: 5px !important;
+                page-break-after: avoid;
+                color: var(--primary-color) !important;
+                -webkit-text-fill-color: var(--primary-color) !important;
+            }
+            
+            .section-title::after {
                 background: var(--primary-color) !important;
-                -webkit-print-color-adjust: exact;
+                height: 2px !important;
+                width: 40px !important;
+            }
+            
+            /* 经历项目样式 */
+            .experience-item {
+                margin-bottom: 15px !important;
+                padding: 12px !important;
+                border-left: 3px solid var(--primary-color) !important;
+                background: #f8f9fa !important;
+                border-radius: 8px !important;
+                page-break-inside: avoid;
+                box-shadow: none !important;
+            }
+            
+            .experience-item::before {
+                display: none !important;
+            }
+            
+            .experience-title {
+                font-size: 1rem !important;
+                font-weight: 700 !important;
+                margin-bottom: 4px !important;
+                color: var(--dark-color) !important;
+            }
+            
+            .experience-company {
+                font-size: 0.9rem !important;
+                margin-bottom: 6px !important;
+                color: var(--primary-color) !important;
+            }
+            
+            .experience-period {
+                background: var(--primary-color) !important;
+                color: white !important;
+                padding: 2px 8px !important;
+                font-size: 0.75rem !important;
+                border-radius: 10px !important;
+            }
+            
+            /* 列表样式 */
+            ul {
+                margin-bottom: 10px !important;
+            }
+            
+            ul li {
+                font-size: 0.85rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 3px !important;
+            }
+            
+            /* 技能标签 */
+            .skill-tag {
+                background: var(--primary-color) !important;
+                color: white !important;
+                padding: 3px 8px !important;
+                margin: 2px !important;
+                font-size: 0.75rem !important;
+                border-radius: 12px !important;
+                display: inline-block !important;
+                box-shadow: none !important;
+            }
+            
+            /* 成就区域 */
+            .achievements {
+                background: #f0f8ff !important;
+                padding: 10px !important;
+                margin-top: 8px !important;
+                border-left: 3px solid var(--success-color) !important;
+                border-radius: 5px !important;
+            }
+            
+            .achievements::before {
+                display: none !important;
+            }
+            
+            .achievements h6 {
+                font-size: 0.9rem !important;
+                margin-bottom: 5px !important;
+                color: var(--success-color) !important;
+            }
+            
+            .achievements p {
+                font-size: 0.8rem !important;
+                margin-bottom: 0 !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* 分页控制 */
+            section {
+                page-break-inside: avoid;
+            }
+            
+            .experience-item {
+                page-break-inside: avoid;
+            }
+            
+            /* 确保重要内容不被分页 */
+            h3, h4, h5, h6 {
+                page-break-after: avoid;
+            }
+            
+            /* 两列布局调整 */
+            .row {
+                margin: 0 !important;
+            }
+            
+            .col-md-6 {
+                width: 48% !important;
+                float: left !important;
+                margin-right: 2% !important;
+            }
+            
+            .col-md-6:last-child {
+                margin-right: 0 !important;
+            }
+            
+            /* 清除浮动 */
+            .row::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            
+            /* 段落间距 */
+            p {
+                margin-bottom: 8px !important;
+                font-size: 0.85rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* 图标调整 */
+            .fas, .fa {
+                color: var(--primary-color) !important;
+            }
+            
+            /* 确保颜色正确显示 */
+            .text-primary {
+                color: var(--primary-color) !important;
+            }
+            
+            .text-success {
+                color: var(--success-color) !important;
+            }
+            
+            /* 移除不必要的动画和效果 */
+            * {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+            
+            /* 个人优势部分特殊调整 */
+            .mb-5 {
+                margin-bottom: 20px !important;
+            }
+            
+            .mt-4 {
+                margin-top: 12px !important;
+            }
+            
+            .mt-3 {
+                margin-top: 8px !important;
+            }
+            
+            /* 技能列表优化 */
+            .list-unstyled li {
+                font-size: 0.8rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 2px !important;
+                padding-left: 0 !important;
+            }
+            
+            /* 确保技能标签在打印时不会过于拥挤 */
+            .skill-tag {
+                line-height: 1.2 !important;
+                white-space: nowrap !important;
+            }
+            
+            /* 标题层级调整 */
+            h5 {
+                font-size: 1rem !important;
+                margin-bottom: 8px !important;
+                margin-top: 10px !important;
+            }
+            
+            h6 {
+                font-size: 0.9rem !important;
+                margin-bottom: 6px !important;
+                font-weight: 600 !important;
+            }
+            
+            /* 确保Bootstrap列在打印时正确显示 */
+            .col-12 {
+                width: 100% !important;
+                float: none !important;
+            }
+            
+            .col-md-3 {
+                width: 24% !important;
+                float: left !important;
+                margin-right: 1% !important;
+            }
+            
+            .col-md-6 {
+                width: 48% !important;
+                float: left !important;
+                margin-right: 2% !important;
+            }
+            
+            /* 头部布局优化 */
+            .header-section .row {
+                display: flex !important;
+                align-items: center !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .header-section .col-md-3 {
+                flex: 0 0 25% !important;
+                max-width: 25% !important;
+            }
+            
+            .header-section .col-md-6 {
+                flex: 0 0 50% !important;
+                max-width: 50% !important;
+            }
+            
+            /* 文本对齐 */
+            .text-center {
+                text-align: center !important;
+            }
+            
+            /* 确保内容不会超出页面边界 */
+            .container {
+                max-width: none !important;
+                width: 100% !important;
             }
         }
         
@@ -618,9 +941,15 @@
 
             <!-- 打印按钮 -->
             <div class="text-center print-hide">
-                <button class="btn btn-primary btn-lg" onclick="window.print()">
+                <button class="btn btn-primary btn-lg" onclick="optimizedPrint()">
                     <i class="fas fa-print me-2"></i>打印简历
                 </button>
+                <div class="mt-2">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        建议使用Chrome浏览器，选择A4纸张，边距设置为"最小"以获得最佳打印效果
+                    </small>
+                </div>
             </div>
         </div>
     </div>
@@ -735,6 +1064,36 @@
 
         // 窗口调整时重新计算动画
         window.addEventListener('resize', animateOnScroll);
+
+        // 优化的打印函数
+        function optimizedPrint() {
+            const printBtn = document.querySelector('.btn-primary');
+            
+            // 打印前的提示
+            printBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>准备打印...';
+            
+            // 添加打印前的样式优化
+            document.body.classList.add('print-ready');
+            
+            setTimeout(() => {
+                // 设置打印参数建议
+                const printSettings = {
+                    paperSize: 'A4',
+                    margins: 'minimum',
+                    orientation: 'portrait',
+                    scale: 'fit-to-page'
+                };
+                
+                // 显示打印对话框
+                window.print();
+                
+                // 恢复按钮状态
+                setTimeout(() => {
+                    printBtn.innerHTML = '<i class="fas fa-print me-2"></i>打印简历';
+                    document.body.classList.remove('print-ready');
+                }, 500);
+            }, 800);
+        }
     </script>
 </body>
 </html>
